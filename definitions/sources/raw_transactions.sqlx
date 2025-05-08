@@ -1,28 +1,6 @@
-config {
-    tags: ["source-ddl"],
-    hasOutput: true,
-    description: "Raw Transactions from the Postgres DB",
-    columns: {
-        transaction_uuid: "Transacation UUID",
-        account_number: "Account Number",
-        date: "Date",
-        withdrawal_amount: "Withdrawal Amount",
-        deposit_amount: "Deposit Amount",
-        balance: "Balance",
-        successful_operation: "Flag for successful operation"
-    },
-    schema: `${dataform.projectConfig.vars.dataset_id_landing}`,
-    database: `${dataform.projectConfig.vars.dataset_projectid_landing}`,
-    name: "raw_transactions"
-}
-
-CREATE TABLE IF NOT EXISTS
-  ${ self() } (
-    transaction_uuid STRING,
-    account_number INT64,
-    date DATE,
-    withdrawal_amount NUMERIC(30, 2),
-    deposit_amount NUMERIC(30, 2),
-    balance NUMERIC(30, 2),
-    successful_operation BOOLEAN
-)
+   config {
+      type: "declaration",
+      database: "hacker-goog",
+      schema: "aef_hack_landing",
+      name: "raw_transactions",
+    }
