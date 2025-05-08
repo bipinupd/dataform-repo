@@ -6,7 +6,7 @@
   "defaultDatabase": "hacker-goog",
   "vars": {
     "connection_name": "projects/hacker-goog/locations/us-central1/connections/sample-connection",
-    "dataset_id_landing": "aef_landing_sample_dataset",
+    "dataset_id_landing": "aef_hack_landing",
     "dataset_projectid_landing": "hacker-goog",
     "dataset_location_landing": "us-central1",
     "dataset_description_landing": "Landing dataset description",
