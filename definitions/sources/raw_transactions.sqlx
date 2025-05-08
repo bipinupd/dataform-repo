@@ -1,5 +1,5 @@
 config {
-    tags: ["ddl"],
+    tags: ["source-ddl"],
     hasOutput: true,
     description: "Raw Transactions from the Postgres DB",
     columns: {
