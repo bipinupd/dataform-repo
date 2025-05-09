@@ -1,0 +1,16 @@
+config {
+  type: "view",
+  name: "matching_accounts",
+  schema: `${dataform.projectConfig.vars.dataset_id_curated}`,
+  database: `${dataform.projectConfig.vars.dataset_projectid_curated}`,
+  dependencies: ["fact_account", "raw_bank_data"],
+  tags: ["vaporviews_metrics"],
+}
+
+SELECT
+    COUNT(DISTINCT vc.account_number) * 100.0 / COUNT(DISTINCT pt.account_number) AS percentage_clients_matched
+FROM
+    ${dataform.projectConfig.vars.dataset_projectid_landing}.${dataform.projectConfig.vars.dataset_id_curated}.fact_account AS pt -- Total Premier Bank clients
+LEFT JOIN
+    ${dataform.projectConfig.vars.dataset_projectid_landing}.${dataform.projectConfig.vars.dataset_id_curated}.raw_transactions AS vc -- VaporViews clients
+    ON pt.account_number = vc.account_number
